@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carzo Dubai</title>
+    <meta name="google-maps-api-key" content="" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./logo.png" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Carzo home">
+          <span class="brand-mark">
+            <img src="./logo.png" alt="" />
+          </span>
+          <span>Carzo</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#cars" data-i18n="navCars">Cars</a>
+          <a href="#hosts" data-i18n="navHosts">Become a host</a>
+          <a href="#support" data-i18n="navSupport">Support</a>
+        </nav>
+
+        <div class="top-actions">
+          <button class="icon-button" type="button" id="themeToggle" aria-label="Toggle theme" title="Theme">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3a1 1 0 0 1 1 1v1.1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 14.9a1 1 0 0 1 1 1V20a1 1 0 1 1-2 0v-1.1a1 1 0 0 1 1-1ZM4 11h1.1a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2Zm14.9 0H20a1 1 0 1 1 0 2h-1.1a1 1 0 1 1 0-2ZM6.34 6.34a1 1 0 0 1 1.42 0l.78.78a1 1 0 0 1-1.42 1.42l-.78-.78a1 1 0 0 1 0-1.42Zm9.12 9.12a1 1 0 0 1 1.42 0l.78.78a1 1 0 1 1-1.42 1.42l-.78-.78a1 1 0 0 1 0-1.42Zm2.2-9.12a1 1 0 0 1 0 1.42l-.78.78a1 1 0 1 1-1.42-1.42l.78-.78a1 1 0 0 1 1.42 0ZM8.54 15.46a1 1 0 0 1 0 1.42l-.78.78a1 1 0 1 1-1.42-1.42l.78-.78a1 1 0 0 1 1.42 0ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z" />
+            </svg>
+          </button>
+          <button class="language-toggle" type="button" id="languageToggle">AR</button>
+          <button class="primary-button compact" type="button" data-i18n="signIn">Sign in</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-media" role="img" aria-label="Luxury car near Dubai skyline"></div>
+          <div class="hero-content">
+            <p class="eyebrow" data-i18n="eyebrow">Dubai car sharing</p>
+            <h1 data-i18n="headline">Find the right car for every Dubai plan.</h1>
+            <p data-i18n="subhead">Book vetted cars across Dubai, from airport-ready SUVs to weekend supercars.</p>
+
+            <form class="search-panel" id="searchForm">
+              <label>
+                <span data-i18n="location">Location</span>
+                <select id="locationInput">
+                  <option value="Dubai Marina">Dubai Marina</option>
+                  <option value="Downtown Dubai">Downtown Dubai</option>
+                  <option value="DXB Airport">DXB Airport</option>
+                  <option value="Palm Jumeirah">Palm Jumeirah</option>
+                  <option value="Business Bay">Business Bay</option>
+                </select>
+              </label>
+              <label>
+                <span data-i18n="from">From</span>
+                <input id="fromInput" type="date" />
+              </label>
+              <label>
+                <span data-i18n="until">Until</span>
+                <input id="untilInput" type="date" />
+              </label>
+              <button class="primary-button search-button" type="submit">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m20.7 19.3-4.2-4.2a7 7 0 1 0-1.4 1.4l4.2 4.2a1 1 0 0 0 1.4-1.4ZM5 11a6 6 0 1 1 12 0 6 6 0 0 1-12 0Z" />
+                </svg>
+                <span data-i18n="search">Search</span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section class="market" id="cars">
+          <aside class="filters" aria-label="Car filters">
+            <div class="filter-heading">
+              <h2 data-i18n="filters">Filters</h2>
+              <button class="text-button" type="button" id="resetFilters" data-i18n="reset">Reset</button>
+            </div>
+
+            <div class="filter-group">
+              <p data-i18n="carType">Car type</p>
+              <div class="segmented" id="typeFilters">
+                <button type="button" class="active" data-type="All" data-i18n="all">All</button>
+                <button type="button" data-type="Luxury" data-i18n="luxury">Luxury</button>
+                <button type="button" data-type="SUV" data-i18n="suv">SUV</button>
+                <button type="button" data-type="Family" data-i18n="family">Family</button>
+                <button type="button" data-type="Electric" data-i18n="electric">Electric</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <label for="priceRange">
+                <span data-i18n="maxPrice">Max daily price</span>
+                <strong><span id="priceValue">1800</span> AED</strong>
+              </label>
+              <input id="priceRange" type="range" min="300" max="2200" step="50" value="1800" />
+            </div>
+
+            <div class="filter-group checks">
+              <label>
+                <input id="deliveryFilter" type="checkbox" />
+                <span data-i18n="delivery">Delivery available</span>
+              </label>
+              <label>
+                <input id="depositFilter" type="checkbox" />
+                <span data-i18n="noDeposit">No deposit</span>
+              </label>
+              <label>
+                <input id="driverFilter" type="checkbox" />
+                <span data-i18n="withDriver">With driver option</span>
+              </label>
+            </div>
+          </aside>
+
+          <section class="results">
+            <div class="results-head">
+              <div>
+                <p class="eyebrow" id="searchSummary">Dubai Marina</p>
+                <h2 data-i18n="availableCars">Available cars</h2>
+              </div>
+              <select id="sortInput" aria-label="Sort cars">
+                <option value="recommended" data-i18n="recommended">Recommended</option>
+                <option value="priceLow" data-i18n="priceLow">Price: low to high</option>
+                <option value="rating" data-i18n="topRated">Top rated</option>
+              </select>
+            </div>
+
+            <div class="category-strip" aria-label="Popular categories">
+              <button type="button" data-type="Luxury">Supercars</button>
+              <button type="button" data-type="SUV">Family SUVs</button>
+              <button type="button" data-type="Family">Minivans</button>
+              <button type="button" data-type="Electric">Electric</button>
+              <button type="button" data-type="All">Airport ready</button>
+            </div>
+
+            <div class="car-grid" id="carGrid"></div>
+          </section>
+        </section>
+
+        <section class="host-band" id="hosts">
+          <div>
+            <p class="eyebrow" data-i18n="hostEyebrow">For Dubai hosts</p>
+            <h2 data-i18n="hostTitle">Turn idle cars into booked days.</h2>
+          </div>
+          <div class="host-metrics">
+            <span><strong>24/7</strong><small data-i18n="supportMetric">Guest support</small></span>
+            <span><strong>2h</strong><small data-i18n="payoutMetric">Fast payouts</small></span>
+            <span><strong>4.9</strong><small data-i18n="trustMetric">Average rating</small></span>
+          </div>
+          <button class="secondary-button" type="button" data-i18n="listCar">List your car</button>
+        </section>
+
+        <footer class="site-footer" id="support">
+          <div>
+            <strong>Carzo Dubai</strong>
+            <span data-i18n="footerLine">Marketplace MVP for premium peer-to-peer car rentals.</span>
+          </div>
+          <a href="mailto:support@carzo.ae">support@carzo.ae</a>
+        </footer>
+      </main>
+    </div>
+
+    <dialog class="booking-dialog" id="bookingDialog">
+      <button class="icon-button close-button" type="button" id="closeDialog" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.3 5.3a1 1 0 0 1 1.4 0l4.3 4.3 4.3-4.3a1 1 0 1 1 1.4 1.4L13.4 11l4.3 4.3a1 1 0 0 1-1.4 1.4L12 12.4l-4.3 4.3a1 1 0 0 1-1.4-1.4l4.3-4.3-4.3-4.3a1 1 0 0 1 0-1.4Z" />
+        </svg>
+      </button>
+      <div id="bookingContent"></div>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
